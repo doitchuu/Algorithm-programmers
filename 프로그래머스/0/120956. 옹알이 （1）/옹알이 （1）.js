@@ -1,12 +1,14 @@
 function solution(babbling) {
-  const word = ['aya', 'ye', 'woo', 'ma'];
+  const words = ["aya", "ye", "woo", "ma"];
 
-  return babbling.map((str) => {
-      for (const w of word) {
-        if (str.includes(w)) {
-          str = str.replace(w, ' ');
+  return babbling.map((string) => {
+      for (const word of words) {
+        if (string.includes(word)) {
+          string = string.replace(word, " ");
         }
       }
-      return str;
-    }).filter((str) => !str.trim()).length;
+    
+      return string;
+    }).filter((string) => !string.trim()).length;
 }
+
