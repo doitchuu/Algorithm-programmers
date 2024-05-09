@@ -1,10 +1,10 @@
 # [level 0] 등수 매기기 - 120882 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120882#qna) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120882) 
 
 ### 성능 요약
 
-메모리: 33.5 MB, 시간: 0.14 ms
+메모리: 33.4 MB, 시간: 0.15 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 05월 09일 23:56:18
+2024년 05월 09일 23:58:34
 
 ### 문제 설명
 
