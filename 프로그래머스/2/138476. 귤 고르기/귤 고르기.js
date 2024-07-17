@@ -13,8 +13,7 @@ function solution(k, tangerine) {
   const sortedCounts = Object.values(tangerineList).sort((a, b) => b - a);
   let numberCount = 0;
   let total = 0;
-  
-  console.log(sortedCounts)
+
   for (let count of sortedCounts) {
     total += count;
     numberCount++;
