@@ -1,35 +1,23 @@
 function solution(maps) {
   const width = maps.length;
   const height = maps[0].length;
-  const isVisited = Array.from({length: width}, (_) => new Array(height).fill(false));
   
-  for (let i = 0; i < width; i++) {
-    for (let j = 0; j < height; j++) {
-      if (maps[i][j] === 0 || isVisited[i][j]) {
-        continue;
-      }
-      
-      return bfs([i, j]);
-    }
-  }
+  maps[0][0] = 2;
+  
+  return bfs([0, 0]);
   
   function bfs(start) {
     const queue = [start];
     const moveX = [0, -1, 0, 1];
     const moveY = [-1, 0, 1, 0];
+    let sum = 0;
     
     while (queue.length) {
       const [currentX, currentY] = queue.shift();
       
       if (currentX === width - 1 && currentY === height - 1) {
-        return maps[currentX][currentY];
+        return maps[currentX][currentY] - 1;
       }
-      
-      if (isVisited[currentX][currentY]) {
-        continue;
-      }
-      
-      isVisited[currentX][currentY] = true;
       
       for (let i = 0; i < 4; i++) {
         const nextX = currentX + moveX[i];
@@ -39,7 +27,7 @@ function solution(maps) {
           nextX < 0 || nextX >= width ||
           nextY < 0 || nextY >= height ||
           maps[nextX][nextY] === 0 ||
-          isVisited[nextX][nextY] === true
+          maps[nextX][nextY] !== 1
         ) {
           continue;
         }
@@ -48,7 +36,7 @@ function solution(maps) {
         queue.push([nextX, nextY]);
       }
     }
-      
+    
     return -1;
   }
 }
