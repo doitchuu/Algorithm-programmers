@@ -1,6 +1,4 @@
 function solution(num, k) {
-    const strList = [...String(num)];
-    const index = strList.indexOf(String(k));
-    
-    return index >= 0 ? index + 1 : index;
+    const hasK = String(num).indexOf(String(k));
+    return hasK === -1 ? -1 : hasK + 1;
 }
