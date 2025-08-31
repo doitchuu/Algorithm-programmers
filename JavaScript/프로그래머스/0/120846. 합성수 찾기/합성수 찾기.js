@@ -1,21 +1,19 @@
 function solution(n) {
-    let result = 0;
+    const result = [];
     
-    for (let i = 1; i <= n; i++) {
-        let answer = [];
+    for (let i = 4; i <= n; i++) {
+        const numbers = [];
         
         for (let j = 1; j <= i; j++) {
             if (i % j === 0) {
-                answer.push(j);
+                numbers.push(j);
             }
         }
         
-        if (answer.length >= 3) {
-            result++;
+        if (numbers.length >= 3) {
+            result.push(i);
         }
-        
-        answer = [];
     }
     
-    return result;
+    return result.length;
 }
