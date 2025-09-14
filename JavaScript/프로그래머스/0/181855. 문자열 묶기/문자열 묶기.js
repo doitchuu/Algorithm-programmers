@@ -13,9 +13,5 @@ function solution(strArr) {
         lengthList[key]++;
     }
     
-    for (const key in lengthList) {
-        result = Math.max(lengthList[key], result);
-    }
-    
-    return result;
+    return Math.max(...Object.values(lengthList));
 }
