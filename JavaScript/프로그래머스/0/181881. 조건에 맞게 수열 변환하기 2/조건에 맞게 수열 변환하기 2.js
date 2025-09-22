@@ -3,15 +3,18 @@ function solution(arr) {
     let count = 0;
 
     while (true) {
-        let newArr = clone.map(calculate);
-
-        if (newArr.every((val, idx) => val === clone[idx])) {
-            return count;
+        const temp = clone.map((item) => calculate(item));
+        let isSameArray = temp.filter((item, index) => item !== clone[index]);
+        
+        if (!isSameArray.length) {
+            break;
         }
-
-        clone = newArr;
+        
+        clone = temp;
         count++;
     }
+    
+    return count;
 }
 
 function calculate(x) {
