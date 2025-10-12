@@ -1,10 +1,13 @@
 function solution(n) {
     const results = new Set();
+    let num = 2;
     
-    for (let i = 2; i <= n; i++) {
-        while (n % i === 0) {
-            results. add(i);
-            n /= i;
+    while (n > 1) {
+        if (n % num === 0) {
+            results.add(num);
+            n /= num;
+        } else {
+            num++;
         }
     }
     
