@@ -1,16 +1,12 @@
 function solution(arr, k) {
-  const result = [];
-
-  for (let i = 0; i < arr.length; i++) {
-    if (!result.includes(arr[i])) {
-      result.push(arr[i]);
+    const result = [...new Set(arr)];
+    
+    if (result.length >= k) {
+        return result.slice(0, k);
+    } else {
+        const difference = k - result.length;
+        const addedArr = new Array(difference).fill(-1);
+        
+        return result.concat(addedArr);
     }
-    if (result.length === k) break; // k개 다 채우면 종료
-  }
-
-  while (result.length < k) {
-    result.push(-1);
-  }
-
-  return result;
 }
