@@ -1,10 +1,23 @@
 function solution(array) {
-  const count = array.reduce((acc, cur) => {
-    acc[cur] = (acc[cur] || 0) + 1;
-    return acc;
-  }, {});
-  const max = Math.max(...Object.values(count));
-  const modes = Object.keys(count).filter(k => count[k] === max);
+    if (array.length === 1) {
+        return array[0];
+    }
     
-  return modes.length === 1 ? Number(modes[0]) : -1;
+    const obj = {};
+    
+    for (let i = 0; i < array.length; i++) {
+        if (obj[array[i]]) {
+            obj[array[i]]++;
+        } else {
+            obj[array[i]] = 1;
+        }
+    }
+    
+    const sortedObjList = Object.entries(obj).sort((a, b) => b[1] - a[1]);
+    
+    if (sortedObjList.length > 1 && sortedObjList[0][1] === sortedObjList[1][1]) {
+        return -1;
+    }
+    
+    return Number(sortedObjList[0][0]);
 }
