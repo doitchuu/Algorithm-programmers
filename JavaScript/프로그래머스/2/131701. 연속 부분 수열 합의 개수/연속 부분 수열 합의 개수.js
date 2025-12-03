@@ -1,18 +1,15 @@
-function solution(elements) {
-    const extended = elements.concat(elements);
-    const sumSet = new Set();
-    let flag = 0;
-
-    while (flag < elements.length) {
-        let sum = 0;
-
-        for (let i = 1; i <= elements.length; i++) {
-            sum += extended[flag + i - 1];
-            sumSet.add(sum);
-        }
-
-        flag++;
+function solution (elements) {
+  const sequence = elements.concat(elements);
+  const results = new Set();
+  
+  for (let i = 1; i <= sequence.length / 2; i++) {
+    for (let j = 0; j < sequence.length / 2; j++) {
+      const subArray = sequence.slice(j, i + j);
+      const sum = subArray.reduce((acc, cur) => cur + acc);
+      
+      results.add(sum);
     }
-
-    return sumSet.size;
+  }
+  
+  return results.size;
 }
