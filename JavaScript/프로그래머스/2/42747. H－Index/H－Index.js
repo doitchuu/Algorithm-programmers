@@ -1,12 +1,17 @@
 function solution(citations) {
-  citations.sort((a, b) => b - a); 
-
-  let h = 0;
-  for (let i = 0; i < citations.length; i++) {
-    const candidate = i + 1; 
-    if (citations[i] >= candidate) h = candidate;
-    else break; 
-  }
-
-  return h;
-}
+    for (let index = 1; index <= citations.length; index++) {
+        let count = 0;
+        
+        citations.forEach((citation) => {
+            if (citation >= index) {
+                count++;
+            }
+        })
+        
+        if (count < index) {
+            return index - 1;
+        }
+    }
+    
+    return citations.length;
+} 
