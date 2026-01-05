@@ -1,30 +1,24 @@
 function solution(k, dungeons) {
-    const isUsed = new Array(dungeons.length).fill(false);
+    const map = new Array(dungeons.length).fill(false);
     let result = 0;
     
-    function dfs(hp, depth) {
-        if (dungeons.length === depth) {
-            return;
-        }
-    
-        for (let start = 0; start < dungeons.length; start++) {
-            const [need, fatigue] = dungeons[start];
+    function dfs (health, depth) {
+        result = Math.max(depth, result);
+        
+        for (let i = 0; i < dungeons.length; i++) {
+            const [needs, hp] = dungeons[i];
             
-            if (isUsed[start]) {
+            if (map[i] || needs > health) {
                 continue;
             }
+        
+            map[i] = true;
             
-            if (hp < need || fatigue > hp || hp <= 0) {
-                continue;
-            }
+            dfs(health - hp, depth + 1);
             
-            isUsed[start] = true;
-            result = Math.max(result, depth + 1);
-            
-            dfs(hp - fatigue, depth + 1);
-            
-            isUsed[start] = false;
+            map[i] = false;
         }
+        
     }
     
     dfs(k, 0);
