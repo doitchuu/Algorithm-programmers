@@ -1,6 +1,7 @@
 function solution(nums) {
-  const divide = nums.length / 2;
-  const kinds = new Set(nums).size;
+    const average = nums.length / 2;
+    const set = new Set(nums);
+    const kind = set.size;
     
-  return divide < kinds ? divide : kinds;
+    return kind > average ? average : kind;
 }
