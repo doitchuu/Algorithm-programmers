@@ -1,21 +1,17 @@
 function solution(s){
-    if (s.length % 2 !== 0) {
+    if (s[0] === ")") {
         return false;
     }
-    
-    let count = 0;
+
+    const stack = [];
     
     for (let i = 0; i < s.length; i++) {
         if (s[i] === "(") {
-            count++;
+            stack.push("(");
         } else {
-            count--;
-        }
-        
-        if (count < 0) {
-            return false;
+            stack.pop();
         }
     }
     
-    return count === 0;
+    return stack.length > 0 ? false : true;
 }
