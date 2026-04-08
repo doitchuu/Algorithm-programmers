@@ -3,15 +3,19 @@ function solution(s){
         return false;
     }
 
-    const stack = [];
+    let result = 0;
     
     for (let i = 0; i < s.length; i++) {
         if (s[i] === "(") {
-            stack.push("(");
+            result++;
         } else {
-            stack.pop();
+            result--;
+        }
+        
+        if (result < 0) {
+            return false;
         }
     }
     
-    return stack.length > 0 ? false : true;
+    return result === 0;
 }
