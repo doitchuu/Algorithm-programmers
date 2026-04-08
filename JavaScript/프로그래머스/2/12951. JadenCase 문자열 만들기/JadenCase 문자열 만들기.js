@@ -1,5 +1,6 @@
 function solution(s) {
-    const strList = s.toLowerCase().split(" ");
-    
-    return strList.map((word) => word ? word[0].toUpperCase() + word.slice(1) : "").join(" ");
+    return s.split(" ").map((char) => {
+        if (char.length === 0) return "";
+        return char[0].toUpperCase() + char.slice(1).toLowerCase();
+    }).join(" ");
 }
