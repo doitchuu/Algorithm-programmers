@@ -1,16 +1,20 @@
 function solution(n) {
-    const one_count = [...n.toString(2)].filter((char) => char === "1").length;
-    let result = n + 1;
+    const oneCount = countOne(n);
+    let answer = n + 1;
     
-    while (result) {
-        const newCount = [...result.toString(2)].filter((char) => char === "1").length;
+    while (true) {
+        const newOneCount = countOne(answer);
         
-        if (newCount === one_count) {
+        if (newOneCount === oneCount) {
             break;
         }
-        
-        result++;
+            
+        answer++;
     }
-        
-    return result;
+    
+    return answer;
+}
+
+function countOne(num) {
+    return num.toString(2).replace(/0/g, "").length;
 }
