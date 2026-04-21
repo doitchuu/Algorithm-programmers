@@ -1,7 +1,27 @@
 function solution(n) {
-    let count = 0;
-    for (let i = 1; i <= n; i++) {
-        if (n % i === 0 && i % 2 === 1) count++;
+    const maxIndex = Math.ceil(n / 2);
+    let index = 1;
+    let result = 1;
+    
+    while (index < maxIndex) {
+        let sum = 0;
+
+        for (let i = index; i <= maxIndex; i++) {
+            sum += i;
+
+            if (sum === n) {
+                result++;
+                break;
+            } 
+            
+            if (sum > n) {
+                break;
+            }
+        }
+        
+        sum = 0;
+        index++;
     }
-    return count;
+    
+    return result;
 }
